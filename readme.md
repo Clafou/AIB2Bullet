@@ -4,8 +4,6 @@ Converts a CSV file exported by AIB Internet Banking to a CSV file that can be i
 
 ## Installation
 
-[npm][]:
-
 ```bash
 npm install
 ```
@@ -13,5 +11,5 @@ npm install
 ## Usage
 
 ```bash
-node index.js path/to/aib/file.csv path/to/output/file.csv
+node convert.js path/to/aib/file.csv path/to/output/file.csv
 ```
