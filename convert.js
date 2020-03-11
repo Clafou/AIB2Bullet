@@ -1,3 +1,5 @@
+'use strict';
+
 const fs = require('fs');
 const parse = require('csv-parse');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
@@ -11,6 +13,7 @@ if (args.length < 4) {
 }
 const inputFile = args[2];
 const outputFile = args[3];
+let blankOrZero = (n) => (n == '' || n == '0.00');
 
 console.log('Converting ' + inputFile);
 var rows = [];
@@ -27,7 +30,7 @@ fs.createReadStream(inputFile)
         moneyOut: data[3],
         moneyIn: data[4],
     }
-    if (row.moneyIn == '' && row.moneyOut == '') {
+    if (blankOrZero(row.moneyIn) && blankOrZero(row.moneyOut)) {
       console.log('Skipped: ' + JSON.stringify(row))  // Skip information rows (without in or out amounts)
       return
     }
